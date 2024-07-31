@@ -5,3 +5,4 @@ numpy
 pandas
 Pillow
 streamlit-drawable-canvas
+azure-storage-blob
