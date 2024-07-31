@@ -5,7 +5,7 @@ import cv2
 from tensorflow.keras.models import load_model
 from streamlit_drawable_canvas import st_canvas
 
-model = load_model('mnist_cnn_model.h5')
+model = load_model('model/mnist_cnn_model.h5')
 test_data = pd.read_csv('data/test.csv')
 
 X_test = test_data.values / 255.0
