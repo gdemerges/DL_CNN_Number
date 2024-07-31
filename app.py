@@ -4,24 +4,24 @@ import pandas as pd
 import cv2
 from tensorflow.keras.models import load_model
 from streamlit_drawable_canvas import st_canvas
-from azure.storage.blob import BlobServiceClient
+import requests
 from io import BytesIO
 
-# Fonction pour télécharger un fichier depuis Azure Blob Storage
-def download_blob_to_df(blob_url, account_name, account_key):
-    blob_service_client = BlobServiceClient(account_url=f"https://{guiblob}.blob.core.windows.net", credential=account_key)
-    blob_client = blob_service_client.get_blob_client(container="guiblob", blob=blob_url)
+# Fonction pour télécharger un fichier depuis GitHub LFS
+def download_file_from_github(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        df = pd.read_csv(BytesIO(response.content))
+        return df
+    else:
+        st.error("Erreur lors du téléchargement du fichier")
+        return None
 
-    blob_data = blob_client.download_blob().readall()
-    df = pd.read_csv(BytesIO(blob_data))
-    return df
+# URL GitHub pour le fichier test.csv
+github_url = "https://github.com/username/repository/raw/branch/path/to/test.csv"
 
-# Charger le fichier CSV depuis Azure Blob Storage
-account_name = st.secrets["azure"]["account_name"]
-account_key = st.secrets["azure"]["account_key"]
-test_blob_url = st.secrets["azure"]["test_blob_url"]
-
-test_data = download_blob_to_df(test_blob_url, account_name, account_key)
+# Charger le fichier CSV depuis GitHub
+test_data = download_file_from_github(github_url)
 
 model = load_model('mnist_cnn_model.h5')
 

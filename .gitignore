@@ -1,6 +1,4 @@
-/data
 .DS_Store
-secrets.toml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
