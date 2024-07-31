@@ -4,25 +4,9 @@ import pandas as pd
 import cv2
 from tensorflow.keras.models import load_model
 from streamlit_drawable_canvas import st_canvas
-import requests
-from io import BytesIO
-
-# Fonction pour télécharger un fichier depuis GitHub LFS
-def download_file_from_github(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        df = pd.read_csv(BytesIO(response.content))
-        return df
-    else:
-        st.error("Erreur lors du téléchargement du fichier")
-        return None
-
-github_url = st.secrets["github"]["test_csv_url"]
-
-# Charger le fichier CSV depuis GitHub
-test_data = download_file_from_github(github_url)
 
 model = load_model('mnist_cnn_model.h5')
+test_data = pd.read_csv('data/test.csv')
 
 X_test = test_data.values / 255.0
 X_test = X_test.reshape(-1, 28, 28, 1)
