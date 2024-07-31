@@ -5,7 +5,6 @@ import cv2
 from tensorflow.keras.models import load_model
 from streamlit_drawable_canvas import st_canvas
 from azure.storage.blob import BlobServiceClient
-import os
 from io import StringIO
 
 account_name = st.secrets["azure"]["account_name"]
@@ -15,12 +14,13 @@ blob_name = st.secrets["azure"]["blob_name"]
 
 # Connexion à Azure Blob Storage
 blob_service_client = BlobServiceClient(
-    account_url=f"https://{guiblob}.blob.core.windows.net",
+    account_url=f"https://guiblob.blob.core.windows.net",
     credential=account_key
 )
 container_client = blob_service_client.get_container_client(container_name)
 blob_client = container_client.get_blob_client(blob_name)
 
+# Télécharger le fichier CSV et le lire dans un DataFrame
 download_stream = blob_client.download_blob()
 download_content = download_stream.content_as_text()
 test_data = pd.read_csv(StringIO(download_content))
