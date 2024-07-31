@@ -4,4 +4,4 @@ pandas==1.5.2
 tensorflow==2.10.0
 streamlit-drawable-canvas==0.7.0
 azure-storage-blob==12.14.1
-opencv-python==4.6.0.66
+opencv-python-headless==4.6.0.66
