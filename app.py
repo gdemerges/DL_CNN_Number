@@ -17,8 +17,7 @@ def download_file_from_github(url):
         st.error("Erreur lors du téléchargement du fichier")
         return None
 
-# URL GitHub pour le fichier test.csv
-github_url = "https://github.com/username/repository/raw/branch/path/to/test.csv"
+github_url = st.secrets["github"]["test_csv_url"]
 
 # Charger le fichier CSV depuis GitHub
 test_data = download_file_from_github(github_url)
