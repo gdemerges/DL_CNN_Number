@@ -1,7 +1,7 @@
 streamlit
-opencv-python-headless
-tensorflow
 numpy
 pandas
-Pillow
+tensorflow
 streamlit-drawable-canvas
+azure-storage-blob
+opencv-python
