@@ -25,7 +25,7 @@ download_stream = blob_client.download_blob()
 download_content = download_stream.content_as_text()
 test_data = pd.read_csv(StringIO(download_content))
 
-model = load_model('model/mnist_cnn_model.h5')
+model = load_model('model/mnist_cnn_model_revised.h5')
 
 X_test = test_data.values / 255.0
 X_test = X_test.reshape(-1, 28, 28, 1)
