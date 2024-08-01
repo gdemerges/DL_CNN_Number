@@ -1,6 +1,6 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
-from azure_utils import load_data_from_azure
+from utils.azure_utils import load_data_from_azure
 
 @st.cache_resource
 def load_model_and_data():
