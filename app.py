@@ -3,14 +3,10 @@ import numpy as np
 import pandas as pd
 import cv2
 from tensorflow.keras.models import load_model
-from tensorflow.keras.losses import SparseCategoricalCrossentropy
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.metrics import SparseCategoricalAccuracy
 from streamlit_drawable_canvas import st_canvas
 from azure.storage.blob import BlobServiceClient
 from io import StringIO
 
-# Chargement des secrets Azure
 account_name = st.secrets["azure"]["account_name"]
 account_key = st.secrets["azure"]["account_key"]
 container_name = st.secrets["azure"]["container_name"]
@@ -24,22 +20,12 @@ blob_service_client = BlobServiceClient(
 container_client = blob_service_client.get_container_client(container_name)
 blob_client = container_client.get_blob_client(blob_name)
 
-# Téléchargement du fichier CSV depuis Azure Blob Storage
 download_stream = blob_client.download_blob()
 download_content = download_stream.content_as_text()
 test_data = pd.read_csv(StringIO(download_content))
 
-# Charger le modèle entraîné
 model = load_model('model/mnist_cnn_model.h5')
 
-# Recompiler le modèle
-model.compile(
-    optimizer=Adam(),
-    loss=SparseCategoricalCrossentropy(from_logits=True),
-    metrics=[SparseCategoricalAccuracy()]
-)
-
-# Préparer les données de test
 X_test = test_data.values / 255.0
 X_test = X_test.reshape(-1, 28, 28, 1)
 
