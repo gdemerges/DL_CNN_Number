@@ -6,10 +6,8 @@ from azure_utils import load_data_from_azure
 def load_model_and_data():
     test_data = load_data_from_azure()
 
-    # Charger le modèle entraîné
     model = load_model('model/mnist_cnn_model.h5')
 
-    # Préparer les données de test
     X_test = test_data.values / 255.0
     X_test = X_test.reshape(-1, 28, 28, 1)
 

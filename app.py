@@ -2,9 +2,9 @@ import streamlit as st
 import numpy as np
 import cv2
 from streamlit_drawable_canvas import st_canvas
-from azure_utils import load_data_from_azure
-from model_utils import load_model_and_data
-from prediction_utils import predict_digit
+from utils.azure_utils import load_data_from_azure
+from utils.model_utils import load_model_and_data
+from utils.prediction_utils import predict_digit
 
 def main():
     st.title("Classification de Chiffres avec un CNN")
