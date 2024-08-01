@@ -1,4 +1,4 @@
-azure_storage==0.37.0
+azure-storage-blob
 numpy==1.25.2
 opencv_python_headless==4.9.0.80
 pandas==1.5.3
