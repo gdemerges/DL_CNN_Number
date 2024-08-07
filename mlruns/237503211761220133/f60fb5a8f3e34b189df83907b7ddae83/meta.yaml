@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/237503211761220133/f60fb5a8f3e34b189df83907b7ddae83/artifacts
+end_time: 1722940108858
+entry_point_name: ''
+experiment_id: '237503211761220133'
+lifecycle_stage: active
+run_id: f60fb5a8f3e34b189df83907b7ddae83
+run_name: whimsical-frog-242
+run_uuid: f60fb5a8f3e34b189df83907b7ddae83
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722940108761
+status: 3
+tags: []
+user_id: guillaumedemerges

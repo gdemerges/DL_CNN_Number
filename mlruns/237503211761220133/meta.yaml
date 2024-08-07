@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/237503211761220133
+creation_time: 1722940108751
+experiment_id: '237503211761220133'
+last_update_time: 1722940108751
+lifecycle_stage: active
+name: /test-databricks-connection
